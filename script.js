@@ -1,6 +1,6 @@
 class Node {
-    constructor(value) {
-        this.value = value;
+    constructor(d) {
+        this.data = d;
         this.left = null;
         this.right = null;
     }
@@ -49,11 +49,26 @@ function postOrder(node) {
     document.write(node.data + " ");
 }
 
+function removeDuplicates(arr){
+    for (let i = 0; i < n; i++){
+        if (arr[i] == arr[i+1]){
+            console.log("duplicate found at " + i + " and " + (i + 1))
+            arr.splice(i, 1)
+        }
+    }
+    return arr
+}
 
+// function levelOrder(node) {
+//     if (node == null){
+//         return
+//     }
+//     document.write(node.data + " ")
+//     levelOrder(node.left)
+//     levelOrder(node.right)
+// }
 
-let arr = [1, 3, 4, 5, 7, 8, 9, 23, 67, 324, 6345]
-
-// ([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
+let arr = [1, 3, 3, 4, 5, 5, 7, 8, 9, 9, 23, 67, 324, 6345]
 
 let n = arr.length
 
