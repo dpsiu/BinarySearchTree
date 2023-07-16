@@ -49,6 +49,60 @@ function postOrder(node) {
     document.write(node.data + " ");
 }
 
+function mergeSort(array) {
+// Need base case. If length is <= 1 (one ele in array)
+// define mid. define left then right.
+// recursion. sortedLeft and sortedRight = recursive(left) and recursive(right)
+// call merge(sortedLeft, sortedRight)
+
+// merge(left, right)
+// result array empty. leftIndex and rightIndex at 0.
+// while both left and right have elements in them (index <= left.length and vice)
+// if left > right, push left to result. leftIndex ++
+// else push right
+
+// then  result = result.concat(left.slice(leftIndex)).concat(right.slice(rightIndex))
+// and return
+
+// THEN, function buildTree takes array, mergeSorts it, removeDuplicates, returns
+// the level-0 root node
+if (array.length <= 1) {
+    return array
+  }
+
+  const middle = Math.floor(array.length/2)
+  const left = array.slice(0, middle)
+  const right = array.slice(middle)
+
+  const sortedLeft = mergeSort(left)
+  const sortedRight = mergeSort(right)
+
+  console.log(sortedLeft)
+  console.log(sortedRight)
+
+  return merge(sortedLeft, sortedRight)
+}
+
+function merge (left, right) {
+  result = []
+  leftIndex = 0
+  rightIndex = 0
+
+  while (leftIndex < left.length && rightIndex < right.length) {
+    if (left[leftIndex] < right[rightIndex]) {
+      result.push(left[leftIndex])
+      leftIndex ++
+    } else {
+      result.push(right[rightIndex])
+      rightIndex ++
+    }
+  }
+
+  result = result.concat(left.slice(leftIndex)).concat(right.slice(rightIndex))
+
+  return result
+}
+
 function removeDuplicates(arr){
     for (let i = 0; i < n; i++){
         if (arr[i] == arr[i+1]){
@@ -57,6 +111,11 @@ function removeDuplicates(arr){
         }
     }
     return arr
+}
+
+function buildTree() {
+    let finishedTree = removeDuplicates(mergeSort(arr))
+    document.write(finishedTree)
 }
 
 // function levelOrder(node) {
@@ -68,7 +127,7 @@ function removeDuplicates(arr){
 //     levelOrder(node.right)
 // }
 
-let arr = [1, 3, 3, 4, 5, 5, 7, 8, 9, 9, 23, 67, 324, 6345]
+let arr = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]
 
 let n = arr.length
 
