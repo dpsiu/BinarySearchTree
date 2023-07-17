@@ -52,8 +52,27 @@ function postOrder(node) {
 }
 
 // insert function
+// add number to the array, run the program again? Is this optimal? NO.
+// Do not use original arr used to build the tree.
+// Keep traversing tree until left or right of root is null (no children on leaf)
+function insert(d, root = this.root) {
+    if (root === null) {
+      root = new Node(d);
+      return root;
+    }
+
+    if (d < root.data) {
+      root.left = this.insert(d, root.left);
+    } else if (d > root.data) {
+      root.right = this.insert(d, root.right);
+    }
+
+    return root;
+  }
+
 
 // delete function
+// 
 
 // find function
 
@@ -129,7 +148,8 @@ function buildTree() {
     n = finishedTree.length
     root = sortedArrayToBST(finishedTree, 0, n-1)
     prettyPrint(root)
-    return finishedTree[Math.floor(n/2)]
+    root.d = finishedTree[Math.floor(n/2)]
+    return root.d
 }
 
 let arr = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]
