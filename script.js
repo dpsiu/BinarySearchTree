@@ -51,23 +51,25 @@ function postOrder(node) {
     document.write(node.data + " ");
 }
 
+// insert function
+
+// delete function
+
+// find function
+
+// levelOrder func
+
+// height func
+
+// depth func
+
+// isBalanced func
+
+// rebalance func
+
+// ----------- mergeSort(array) --------------
+
 function mergeSort(array) {
-// Need base case. If length is <= 1 (one ele in array)
-// define mid. define left then right.
-// recursion. sortedLeft and sortedRight = recursive(left) and recursive(right)
-// call merge(sortedLeft, sortedRight)
-
-// merge(left, right)
-// result array empty. leftIndex and rightIndex at 0.
-// while both left and right have elements in them (index <= left.length and vice)
-// if left > right, push left to result. leftIndex ++
-// else push right
-
-// then  result = result.concat(left.slice(leftIndex)).concat(right.slice(rightIndex))
-// and return
-
-// THEN, function buildTree takes array, mergeSorts it, removeDuplicates, returns
-// the level-0 root node
 if (array.length <= 1) {
     return array
   }
@@ -115,7 +117,8 @@ function removeDuplicates(arr){
     return arr
 }
 
-// Combines various functions to build BST 
+// ------ buildTree() combines various functions to build BST ---------
+
 function buildTree() {
     // Need to take array, order it (mergeSort(arr))
     //  removeDuplicates()
@@ -129,23 +132,14 @@ function buildTree() {
     return finishedTree[Math.floor(n/2)]
 }
 
-// function levelOrder(node) {
-//     if (node == null){
-//         return
-//     }
-//     document.write(node.data + " ")
-//     levelOrder(node.left)
-//     levelOrder(node.right)
-// }
-
 let arr = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]
 
 let n = arr.length
 
-
 root = sortedArrayToBST(arr, 0, n-1)
 
 
+// ----------- prettyPrint --------------
 const prettyPrint = (node, prefix = "", isLeft = true) => {
     if (node === null) {
       return;
