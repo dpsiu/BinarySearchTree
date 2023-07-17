@@ -8,6 +8,8 @@ class Node {
 
 var root = null;
 
+
+// takes root array w/ parameters, turns it into node tree
 function sortedArrayToBST(arr, start, end) {
     if (start > end){
         return null;
@@ -106,16 +108,25 @@ function merge (left, right) {
 function removeDuplicates(arr){
     for (let i = 0; i < n; i++){
         if (arr[i] == arr[i+1]){
-            console.log("duplicate found at " + i + " and " + (i + 1))
+            console.log("duplicate " +(arr[i]) + " found at " + i + " and " + (i + 1))
             arr.splice(i, 1)
         }
     }
     return arr
 }
 
+// Combines various functions to build BST 
 function buildTree() {
+    // Need to take array, order it (mergeSort(arr))
+    //  removeDuplicates()
+    // Need to redefine n = arr.length. This is the new length after rmving dupes
+    // Then pass it through sortedArrayToBST(arr, 0, n-1)
+    // This is the new root, and pass root prettyPrint()
     let finishedTree = removeDuplicates(mergeSort(arr))
-    document.write(finishedTree)
+    n = finishedTree.length
+    root = sortedArrayToBST(finishedTree, 0, n-1)
+    prettyPrint(root)
+    return finishedTree[Math.floor(n/2)]
 }
 
 // function levelOrder(node) {
